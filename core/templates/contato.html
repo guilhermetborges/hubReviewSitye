@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contato</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#121212] text-white font-sans min-h-screen flex items-center justify-center p-5">
+
+    <div class="bg-[#1e1e1e] max-w-3xl w-full p-12 rounded-xl shadow-md mt-5 mb-5">
+        <h1 class="text-3xl text-[#f6fffe] font-bold text-center mb-8">Entre em Contato</h1>
+
+        {% if messages %}
+            <div class="mb-4">
+                {% for message in messages %}
+                    <div class="p-4 rounded bg-green-600 text-white mb-2">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <form action="{% url 'contato' %}" method="post" class="space-y-4" autocomplete="off">
+            {% csrf_token %}
+            <form method="post" class="space-y-4">
+                {% csrf_token %}
+            
+                <div>
+                    <label for="{{ form.nome.id_for_label }}" class="block mb-1">Nome</label>
+                    {{ form.nome }}
+                </div>
+            
+                <div>
+                    <label for="{{ form.email.id_for_label }}" class="block mb-1">Email (opicional)</label>
+                    {{ form.email }} 
+                </div>
+
+                <div>
+                    <label for="{{ form.assunto.id_for_label }}" class="block mb-1">assunto </label>
+                    {{ form.assunto }}
+                </div>
+            
+                <div>
+                    <label for="{{ form.mensagem.id_for_label }}" class="block mb-1">Mensagem</label>
+                    {{ form.mensagem }}
+                </div>
+            
+                <button type="submit" class="w-full py-4 text-lg bg-[#2b179e] hover:bg-[#0088cc] text-white rounded transition">
+                    Enviar
+                </button>
+            </form>
+
+   
+        </form>
+
+        <a href="{% url 'index' %}" class="block w-full py-4 text-lg bg-[#333] hover:bg-[#555] text-white text-center rounded mt-4 transition">
+            Voltar
+        </a>
+    </div>
+
+</body>
+</html>

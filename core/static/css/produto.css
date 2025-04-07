@@ -1,0 +1,91 @@
+/* Estilos gerais */
+body {
+    background-color: #0006ad60; /* Fundo branco */
+    color: #333; /* Texto escuro */
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Container do formulário */
+.container {
+    max-width: 800px;
+    width: 100%;
+    background-color: #e6e6e6; /* Cinza claro para contraste */
+    padding: 50px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    position: relative;
+}
+
+/* Título */
+h1 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: #000000; /* Azul bonito para destacar */
+}
+
+.btn-primary {
+    width: 100%;
+    height: 45px;
+    padding: 18px;
+    font-size: 20px;
+    background-color: #081080; /* Azul vibrante */
+    border: none;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #0b171d;
+}
+
+/* Botão Voltar */
+.btn-secondary {
+    width: 100%;
+    height: 45px;
+    padding: 10px;
+    font-size: 17px;
+    background-color: #411883;
+    border: none;
+    color: white;
+    text-align: center;
+    display: block;
+    margin-top: 10px;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.btn-secondary:hover {
+    background-color: #302641;
+}
+
+/* Links */
+a {
+    color: rgb(0, 0, 0);
+}
+
+
+
+/* Ajuste para o botão de voltar */
+button a {
+    display: block;
+    padding: 10px 15px;
+    background-color: #3f1ba1;
+    border-radius: 5px;
+    color: rgb(13, 34, 92);
+    text-align: center;
+}
+
+button a:hover {
+    background-color: #451e85;
+}

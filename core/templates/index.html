@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Produtos</title>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="text-3xl font-semibold text-blue-600">Hub Reviews</a>
+
+            <div class="flex gap-4  ">
+
+                <a href="avaliacoes" class=" text-xl text-gray-800 hover:text-blue-300">Reviews</a>
+            </div>
+
+            <div class="flex gap-4 ">
+                <a href="produto" class="text-gray-700 text-xl hover:text-blue-600">Adicionar Avaliação</a>
+                
+
+                 
+        
+            </div>
+            
+        </div>
+    </nav>
+
+    <div class="bg-gray-900 text-white p-8 rounded-lg shadow-lg max-w-4xl mx-auto mt-10">
+        <h2 class="text-3xl font-bold mb-6 text-center">🔍 Sobre Hub Reviews</h2>
+    
+        <div class="mb-6">
+            <h3 class="text-xl font-semibold mb-2">🧾 Quem somos</h3>
+            <p class="text-gray-300">
+                Somos uma plataforma independente dedicada a reunir avaliações sinceras de produtos variados, feitas por pessoas reais. Nosso objetivo é ajudar consumidores a tomarem decisões mais seguras e bem-informadas antes de comprar qualquer produto.
+            </p>
+        </div>
+    
+        <div class="mb-6">
+            <h3 class="text-xl font-semibold mb-2">🛠️ O que você pode fazer aqui</h3>
+            <ul class="list-disc list-inside text-gray-300">
+                <li>Avaliar produtos que você já usou</li>
+                <li>Consultar opiniões de outros usuários</li>
+                <li>Ver notas e comentários sobre os itens mais populares</li>
+                <li>Buscar produtos por nome para encontrar informações rápidas e confiáveis</li>
+            </ul>
+        </div>
+    
+        <div>
+            <h3 class="text-xl font-semibold mb-2">🚀 Melhorias que estão por vir</h3>
+            <ul class="list-disc list-inside text-gray-300">
+                <li>Sistema de login e perfis de usuários</li>
+                <li>Filtros por categoria e nota</li>
+                <li>Destaque para produtos mais bem avaliados</li>
+                <li>Design responsivo para dispositivos móveis</li>
+                <li>Mais interatividade e personalização</li>
+
+            </ul>
+        </div>
+        <div>
+            <h3 class="text-xl font-semibold mb-2 mt-5">👥 Colabore conosco</h3>
+            <p class="text-gray-300">
+                Se você tem sugestões, gostaria de contribuir com melhorias, fazer uma parceria ou até relatar alguma reclamação, não hesite em entrar em contato! Estamos sempre abertos a feedbacks, novas ideias e colaborações que possam tornar o projeto ainda melhor.
+            
+            </p>
+            <p class="text-gray-300">
+                Entre em contato conosco aqui: <a href="contato"  class="text-purple-600 hover:underline text-2xl">contato</a>
+            </p>
+        </div>
+    </div>
+    
+
+
+    <footer class="bg-gray-100 text-gray-500 text-center py-4 w-full border-t border-gray-300">
+
+        <p>&copy; Desenvolvido por 
+            <a href="https://github.com/guilhermetborges" target="_blank" rel="noopener noreferrer" class="text-purple-900 hover:underline">
+            GuilhermeTborges
+            </a>  
+            2025 ©
+        </p>
+    </footer>
+
+    
+
+    <!-- Modal JS -->
+    <script>
+        document.querySelectorAll('[data-toggle="modal"]').forEach(link => {
+            link.addEventListener('click', e => {
+                e.preventDefault();
+                const modalId = link.getAttribute('href').replace('#', '');
+                document.getElementById(modalId).classList.remove('hidden');
+            });
+        });
+    </script>
+</body>
+</html>

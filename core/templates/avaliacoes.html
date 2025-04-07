@@ -1,0 +1,78 @@
+{% load bootstrap4 %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos</title>
+    {% bootstrap_css %}
+    <link rel="stylesheet" href="{% static 'css/aval.css' %}">
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="d-flex mb-1">
+
+        <a href="{% url 'index' %}" class="btn btn-secondary" style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);">Voltar</a>
+
+    </div>
+
+
+    <div class="d-flex justify-content-center mb-4">
+        <form class="d-flex" method="get" action="{% url 'avaliacoes' %}">
+            <input class="form-control form-control-sm" type="search" name="q" placeholder="Buscar produto..." aria-label="Buscar" style="max-width: 220px; margin-right: 10px;">
+            <button class="btn btn-outline-light btn-sm" type="submit">Buscar</button>
+        </form>
+    </div>
+    
+    
+
+    <!-- Lista de produtos -->
+    <div class="row g-4">
+        {% for produto in produtos %}
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100">
+                    <img src="{{ produto.imagem.url }}" class="card-img-top mx-auto d-block" style="height: 180px; object-fit: cover;" alt="{{ produto.nome }}">
+
+                    <div class="card-body">
+                        <h5 class="card-title">{{ produto.nome }}</h5>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Preço: R$ {{ produto.preco }}</li>
+                        <li class="list-group-item">Nota: {{ produto.nota }}</li>
+                    </ul>
+                    <div class="card-body">
+                        <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modal{{ produto.id }}">
+                            Ver mais
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="modal{{ produto.id }}" tabindex="-1" aria-labelledby="modalLabel{{ produto.id }}" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalLabel{{ produto.id }}">{{ produto.nome }}</h5>
+                            <button type="button" class="btn-close btn-close-red" data-bs-dismiss="modal" aria-label="Fechar" style="background-color: rgba(211, 0, 0, 0.712); color: rgb(255, 255, 255);">X</button>
+                        </div>
+                        <div class="modal-body text-center">
+                            <img src="{{ produto.imagem.url }}" style="width: 225px; height: auto;" class="img-fluid mb-3" alt="{{ produto.nome }}">
+                            <p><strong>Avaliação:</strong> {{ produto.avaliacao }}</p>
+                            <p><strong>Preço:</strong> R$ {{ produto.preco }}</p>
+                            <p><strong>Nota:</strong> {{ produto.nota }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Bootstrap 5 JS com Popper (essencial para o modal funcionar) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

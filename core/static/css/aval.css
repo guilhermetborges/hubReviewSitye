@@ -1,0 +1,27 @@
+
+body {
+    background-color: #121212;
+    color: #fff;
+}
+.card {
+    background-color: #1e1e1e;
+    border: none;
+}
+.card-title {
+    color: #ffffff;
+}
+.list-group-item {
+    background-color: #2a2a2a;
+    color: #ffffff;
+}
+.modal-content {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+.btn-primary {
+    background-color: #3b82f6;
+    border: none;
+}
+.btn-primary:hover {
+    background-color: #2563eb;
+}
