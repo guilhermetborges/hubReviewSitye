@@ -1,4 +1,3 @@
-
 # Product Review Platform
 
 A web application built with Django that allows users to submit and browse reviews for a wide variety of products. This platform was designed to be simple, modern, and responsive, with a focus on user experience and clean UI.

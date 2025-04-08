@@ -50,7 +50,13 @@ def produto(request):
 
 
 def avaliacoes(request):
-    produtos = Produto.objects.all()
+    query = request.GET.get('q') ## Pega o valor do campo de busca
+    if query:
+        produtos = Produto.objects.filter(nome__icontains=query) ## Filtra os produtos pelo nome
+    else:
+        ## Se não houver valor no campo de busca, retorna todos os produtos
+        ## Caso contrário, retorna os produtos filtrados pelo nome
+        produtos = Produto.objects.all()
     context = {
         'produtos': produtos
     }
