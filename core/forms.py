@@ -1,12 +1,13 @@
 from django import forms
 from django.core.mail.message import EmailMessage
-from .models import Produto
+from .models import Produto, Forms
 
-class ContatoForm(forms.Form):
-    nome = forms.CharField(label='Nome', max_length=100)
-    email = forms.EmailField(label='Email', max_length=100 ,required=False)
-    assunto = forms.CharField(label='Assunto', max_length=120)
-    mensagem = forms.CharField(label='Mensagem', widget=forms.Textarea(), max_length=300)
+class FormsForm(forms.ModelForm):
+
+    class Meta:
+        model = Forms
+        fields = ['nome', 'email', 'assunto', 'mensagem']
+
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -18,7 +19,7 @@ class ContatoForm(forms.Form):
              
             })
 
-
+'''
     def send_mail(self):
         nome = self.cleaned_data['nome']
         email = self.cleaned_data['email']
@@ -44,6 +45,7 @@ class ContatoForm(forms.Form):
             headers={'Reply-To': email}
         )
         mail.send()
+'''
 
 class ProdutoModelForm(forms.ModelForm):
     NOTA_CHOICES = [(i, str(i)) for i in range(0, 11)]

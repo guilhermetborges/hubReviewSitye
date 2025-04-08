@@ -1,7 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404 ,redirect
 from django.contrib import messages
 
-from .forms import ContatoForm, ProdutoModelForm
+from .forms import FormsForm, ProdutoModelForm
 from .models import Produto
 
 
@@ -14,12 +14,12 @@ def index(request):
 
 
 def contato(request):
-    form = ContatoForm(request.POST or None)
+    form = FormsForm(request.POST or None)
     if str(request.method) == 'POST':
         if form.is_valid():
-            form.send_mail()
+            form.save()
             messages.success(request, 'Mensagem enviada com sucesso!')
-            form = ContatoForm()
+            form = FormsForm()
         else:
             messages.error(request, 'Erro ao enviar mensagem!')
     context = {
