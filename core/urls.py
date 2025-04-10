@@ -1,10 +1,10 @@
 from django.urls import path
 
-from .views import index, contato, produto, avaliacoes
+from .views import IndexView , ProdutoCreateView, ProdutoListView, ContatoView
 
 urlpatterns = [
-    path('', index, name='index'),
-    path('contato/', contato, name='contato'),
-    path('produto/', produto, name='produto'),
-    path('avaliacoes/', avaliacoes, name='avaliacoes'),
+    path('', IndexView.as_view(), name='index'),
+    path('contato/', ContatoView.as_view(), name='contato'),
+    path('produto/', ProdutoCreateView.as_view(), name='produto'),
+    path('avaliacoes/', ProdutoListView.as_view(), name='avaliacoes'),
 ]

@@ -2,62 +2,73 @@ from django.shortcuts import render, get_object_or_404 ,redirect
 from django.contrib import messages
 
 from .forms import FormsForm, ProdutoModelForm
-from .models import Produto
+from .models import Produto, Forms
+from django.views.generic import TemplateView
+from django.urls import reverse_lazy
+
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 
-def index(request):
-    context = {
-        'produtos': Produto.objects.all()
-    }
-
-    return render(request, 'index.html',context)
+class IndexView(TemplateView):
+    template_name = 'index.html'
 
 
-def contato(request):
-    form = FormsForm(request.POST or None)
-    if str(request.method) == 'POST':
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Mensagem enviada com sucesso!')
-            form = FormsForm()
-        else:
-            messages.error(request, 'Erro ao enviar mensagem!')
-    context = {
-        'form': form
-    }
-    return render(request, 'contato.html', context)
+class ProdutoCreateView(CreateView):
+    model = Produto
+    form_class = ProdutoModelForm
+    template_name = 'produto.html'
+    success_url = reverse_lazy('produto-create')
+
+    def form_valid(self, form):
+        messages.success(self.request, 'Produto cadastrado com sucesso!')
+        return super().form_valid(form)
+    
+    def form_invalid(self, form):
+        messages.error(self.request, 'Erro ao cadastrar produto!')
+        return super().form_invalid(form)
 
 
-def produto(request):
-    if str(request.method) == 'POST':
-        form = ProdutoModelForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
+class ContatoView(CreateView):
+    model = Forms
+    form_class = FormsForm
+    template_name = 'contato.html'
+    success_url = reverse_lazy('contato')
 
-            messages.success(request, 'Produto cadastrado com sucesso!')
-            form = ProdutoModelForm()
-
-        else:
-            messages.error(request, 'Erro ao cadastrar produto!')
-    else:
-        form = ProdutoModelForm()
-
-    context = {
-        'form': form
-    }
-
-    return render(request, 'produto.html', context)
+    def form_valid(self, form):
+        messages.success(self.request, 'Mensagem enviada com sucesso!')
+        return super().form_valid(form)
+    
+    def form_invalid(self, form):
+        messages.error(self.request, 'Erro ao enviar mensagem!')
+        return super().form_invalid(form)
+    
 
 
-def avaliacoes(request):
-    query = request.GET.get('q') ## Pega o valor do campo de busca
-    if query:
-        produtos = Produto.objects.filter(nome__icontains=query) ## Filtra os produtos pelo nome
-    else:
-        ## Se não houver valor no campo de busca, retorna todos os produtos
-        ## Caso contrário, retorna os produtos filtrados pelo nome
-        produtos = Produto.objects.all()
-    context = {
-        'produtos': produtos
-    }
-    return render(request, 'avaliacoes.html', context)
+class ContatoView(CreateView):
+    model = Forms
+    form_class = FormsForm
+    template_name = 'contato.html'
+    success_url = reverse_lazy('contato')
+
+    def form_valid(self, form):
+        messages.success(self.request, 'Mensagem enviada com sucesso!')
+        return super().form_valid(form)
+    
+    def form_invalid(self, form):
+        messages.error(self.request, 'Erro ao enviar mensagem!')
+        return super().form_invalid(form)
+    
+
+class ProdutoListView(ListView):
+    model = Produto
+    template_name = 'avaliacoes.html'
+    context_object_name = 'produtos'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        if query:
+            return Produto.objects.filter(nome__icontains=query)
+        return Produto.objects.all()
+
+
+
