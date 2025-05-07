@@ -1,11 +1,15 @@
 from django.db import models
-
+from django.contrib.auth.models import AbstractUser
 
 from stdimage.models import StdImageField
 
 
 from django.db.models import signals
 from django.template.defaultfilters import slugify
+
+class Usuario(AbstractUser):
+    username = models.CharField('Usuário', max_length=30, unique=True)
+
 
 class Base(models.Model):
     criado = models.DateField('Criação', auto_now_add=True)

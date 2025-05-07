@@ -1,6 +1,12 @@
 from django.contrib import admin
-from .models import Produto, Forms
- 
+from .models import Produto, Forms , Usuario
+from .forms import UsuarioRegisterForm
+
+@admin.register(Usuario)
+class UsuarioAdmin(admin.ModelAdmin):
+    form = UsuarioRegisterForm
+    model = Usuario
+
 
 @admin.register(Produto)
 class ProdutoAdmin(admin.ModelAdmin):
