@@ -50,7 +50,7 @@ class ProdutoCreateView(CreateView):
     model = Produto
     form_class = ProdutoModelForm
     template_name = 'produto.html'
-    success_url = reverse_lazy('produto-create')
+    success_url = reverse_lazy('produto')
 
     def form_valid(self, form):
         messages.success(self.request, 'Produto cadastrado com sucesso!')
