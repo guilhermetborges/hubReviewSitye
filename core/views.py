@@ -80,14 +80,16 @@ class ContatoView(CreateView):
 
 class ProdutoListView(ListView):
     model = Produto
+    paginate_by = 8
+    ordering = ['id']  
     template_name = 'avaliacoes.html'
     context_object_name = 'produtos'
 
     def get_queryset(self):
-        query = self.request.GET.get('q')
-        if query:
-            return Produto.objects.filter(nome__icontains=query)
-        return Produto.objects.all()
-
+        queryset = super().get_queryset()
+        q = self.request.GET.get('q')
+        if q:
+            queryset = queryset.filter(nome__icontains=q)
+        return queryset
 
 
