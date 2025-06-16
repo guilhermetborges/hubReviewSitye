@@ -100,7 +100,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'django1',
         'USER': 'root',
-        'PASSWORD': '#Felipe33',
+        'PASSWORD': '*******',
         'HOST': 'localhost',
         'PORT': '3306',
     }
@@ -164,8 +164,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 """"
 EMAIL_HOST = 'localhost'
-EMAIL_HOST_USER = 'w8x9t@example.com'
+EMAIL_HOST_USER = 'GTB@example.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_PASSWORD = 'sua_senha'
+EMAIL_HOST_PASSWORD = '*****'
 """
