@@ -36,3 +36,14 @@ Images uploaded by users are resized to standard dimensions (`150x150`) and opti
 ```bash
 git clone https://github.com/your-username/your-repo.git
 cd your-repo
+```
+
+## 🛠️ SITE PREVIEW
+
+
+<img width="1323" height="641" alt="image" src="https://github.com/user-attachments/assets/4d2505b1-da5c-4dd4-a6e1-c3b33b7239b4" />
+
+<img width="784" height="617" alt="image" src="https://github.com/user-attachments/assets/d32aff16-8836-4c0d-90e7-9001e277bff2" />
+
+<img width="1195" height="589" alt="image" src="https://github.com/user-attachments/assets/91403d1c-f2e9-4091-a3cb-36d05aa5635e" />
+
